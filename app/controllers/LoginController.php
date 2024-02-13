@@ -8,10 +8,11 @@ session_start();
 class LoginController extends Controller {
     public function index() {
         ob_start(); 
-        //$this->view('login');
+        $link_main = 'http://localhost/ofertasymas/public/main';
 
         if (isset($_SESSION['id_user_oym'])) {
-            $this->view('main', ['title' => 'Página Main']);
+            header('Location: '.$link_main);
+            exit;
         }else{
             $this->view('login', ['error' => 'Debe iniciar Session']);
         }
@@ -27,8 +28,8 @@ class LoginController extends Controller {
                 
                 $_SESSION['id_user_oym'] = $user->id;
                 $_SESSION['email_oym'] = $email;
-                header('Location: main');
-                exit; 
+                header('Location: '.$link_main);
+                exit;
             } else {
                 ob_end_clean();
                 $this->view('login', ['error' => 'Credenciales incorrectas']);

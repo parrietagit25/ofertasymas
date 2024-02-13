@@ -7,7 +7,7 @@
 
 "use strict";
 
-// Preloader
+// Preloader /*
 const preLoader = function () {
   let preloaderWrapper = document.getElementById("preloader");
   window.onload = () => {
@@ -693,7 +693,7 @@ if (quantityWrapper) {
   });
 }
 
-// Modal JS
+// Modal JS 
 const openEls = document.querySelectorAll("[data-open]");
 const closeEls = document.querySelectorAll("[data-close]");
 const isVisible = "is-visible";
@@ -717,7 +717,7 @@ document.addEventListener("keyup", (e) => {
   if (e.key == "Escape" && document.querySelector(".modal.is-visible")) {
     document.querySelector(".modal.is-visible").classList.remove(isVisible);
   }
-});
+}); 
 
 // Accordion
 function customAccordion(accordionWrapper, singleItem, accordionBody) {

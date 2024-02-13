@@ -9,7 +9,7 @@ class RegisterController extends Controller {
     public function index() {
         $this->view('register');
 
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['user_public'])) {
             
             $password = password_hash($_POST['pass'], PASSWORD_DEFAULT);
             $_POST['pass'] = $password;

@@ -44,7 +44,8 @@
 
     <!-- Start header area -->
 <?php include_once __DIR__ . '/recurrentes/menu.php'; ?>
-    <!-- End header area -->
+
+    
 
     <main class="main__content_wrapper">
         
@@ -64,7 +65,42 @@
                     </div>
                     <div class="account__wrapper">
                         <div class="account__content">
-                            <h2 class="account__content--title h3 mb-20">Todos los Usuarios <a href="" class="btn btn-warning">Agregar Usuarios</a></h2>
+                            <h2 class="account__content--title h3 mb-20">Todos los Usuarios <button type="button" data-open="registroUser" class="btn btn-warning">Registrar</button></h2>
+
+                            <!-- Modal -->
+                            <div class="modal" id="registroUser" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content" style="width:500px;">
+                                        <form action="" method="post">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title">Registrar Usuario</h5>
+                                                <button type="button" data-close class="btn-close" aria-label="Cerrar"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <label for="">Nombre</label>
+                                                <input type="text" class="form-control" name="nombre" id="" value="">
+                                                <label for="">Email</label>
+                                                <input type="text" class="form-control" name="email" id="" value="">
+                                                <label for="">Password</label>
+                                                <input type="text" class="form-control" name="pass" id="" value="">
+                                                <label for="">Tipo de usuario</label>
+                                                <select name="tipo_user" class="form-control" id="">
+                                                    <option value="">Seleccionar</option>
+                                                    <option value="1">Admin</option>
+                                                    <option value="2">Usuario</option>
+                                                    <option value="3">Usuario Final</option>
+                                                </select>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-close>Cerrar</button>
+                                                <button type="submit" class="btn btn-primary">Guardar cambios</button>
+                                                <input type="hidden" class="" name="registrar" valie="1">
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+
                             <div class="account__table--area">
                                 <table class="account__table">
                                     <thead class="account__table--header">
@@ -85,10 +121,61 @@
                                                     <td class="account__table--body__child--items"><?php echo htmlspecialchars($user->email); ?></td>
                                                     <td class="account__table--body__child--items"><?php echo htmlspecialchars($user->tipo_user); ?></td>
                                                     <td class="account__table--body__child--items">
-                                                        <a href="" class="btn btn-primary">Modificar</a>
-                                                        <a href="" class="btn btn-danger">Eliminar</a>
+                                                        <button type="button" data-open="editUserModal<?php echo htmlspecialchars($user->id); ?>" class="btn btn-warning">Editar</button>
+                                                        <button type="button" data-open="elimUserModal<?php echo htmlspecialchars($user->id); ?>" class="btn btn-danger">Eliminar</button>
                                                     </td>
                                                 </tr>
+
+                                                <div class="modal" id="editUserModal<?php echo htmlspecialchars($user->id); ?>" aria-hidden="true">
+                                                    <div class="modal-dialog">
+                                                        <div class="modal-content" style="width:500px;">
+                                                            <form action="" method="post">
+                                                                <div class="modal-header">
+                                                                    <h5 class="modal-title">Editar Usuario</h5>
+                                                                    <button type="button" data-close class="btn-close" aria-label="Cerrar"></button>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                    <label for="">Nombre</label>
+                                                                    <input type="text" class="form-control" name="nombre" id="" value="<?php echo htmlspecialchars($user->nombre); ?>">
+                                                                    <label for="">Email</label>
+                                                                    <input type="text" class="form-control" name="email" id="" value="<?php echo htmlspecialchars($user->email); ?>">
+                                                                    <label for="">Tipo de usuario</label>
+                                                                    <select name="tipo_user" class="form-control" id="">
+                                                                        <option value="">Seleccionar</option>
+                                                                        <option value="<?php echo htmlspecialchars($user->tipo_user); ?>"><?php echo htmlspecialchars($user->tipo_user); ?></option>
+                                                                    </select>
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <button type="button" class="btn btn-secondary" data-close>Cerrar</button>
+                                                                    <button type="submit" class="btn btn-primary">Guardar cambios</button>
+                                                                    <input type="hidden" class="" name="actualizar" value="<?php echo htmlspecialchars($user->id); ?>">
+                                                                </div>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="modal" id="elimUserModal<?php echo htmlspecialchars($user->id); ?>" aria-hidden="true">
+                                                    <div class="modal-dialog">
+                                                        <div class="modal-content" style="width:500px;">
+                                                            <form action="" method="post">
+                                                                <div class="modal-header">
+                                                                    <h5 class="modal-title">Eliminar Usuario</h5>
+                                                                    <button type="button" data-close class="btn-close" aria-label="Cerrar"></button>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                    Esta seguro que desea eliminar el usuario <?php echo htmlspecialchars($user->nombre); ?>
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <button type="button" class="btn btn-secondary" data-close>Cerrar</button>
+                                                                    <button type="submit" class="btn btn-danger">Eliminar</button>
+                                                                    <input type="hidden" class="" name="eliminar" value="<?php echo htmlspecialchars($user->id); ?>">
+                                                                </div>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
                                             <?php endforeach; ?>
                                         <?php else: ?>
                                             <p>No se encontraron usuarios.</p>
@@ -257,6 +344,9 @@
                 </div>
             </div>
         </section>
+
+
+
         <!-- my account section end -->
 
         <!-- Start shipping section -->

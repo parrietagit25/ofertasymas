@@ -10,32 +10,23 @@ class GlobalModel{
     public function insert($table, $data) {
         $keys = array_keys($data);
         $values = array_values($data);
-    
         $columnNames = implode(", ", $keys);
         $placeholders = implode(", ", array_map(function($key) { return ":$key"; }, $keys));
-    
         $sql = "INSERT INTO $table ($columnNames) VALUES ($placeholders)";
-        
         $stmt = $this->db->prepare($sql);
-    
         foreach ($data as $key => $value) {
             $stmt->bindValue(":$key", $value);
         }
-    
         return $stmt->execute();
     }
 
     public function update($table, $data, $condition) {
         $updateFields = implode(", ", array_map(function($key) { return "$key = :$key"; }, array_keys($data)));
-    
         $sql = "UPDATE $table SET $updateFields WHERE $condition";
-    
         $stmt = $this->db->prepare($sql);
-    
         foreach ($data as $key => $value) {
             $stmt->bindValue(":$key", $value);
         }
-    
         return $stmt->execute();
     }
 
@@ -46,5 +37,10 @@ class GlobalModel{
         return $stmt->fetchAll(PDO::FETCH_OBJ); 
     }
     
+    public function eliminar($tabla, $where) {
+        $sql = "DELETE FROM $tabla WHERE $where";
+        $stmt = $this->db->prepare($sql);
+        return $stmt->execute();; 
+    }
     
 }

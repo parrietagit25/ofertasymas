@@ -1,6 +1,6 @@
 <?php include_once __DIR__ . '/recurrentes/head.php'; ?>
 
-    <!-- Start preloader -->
+    <!-- Start preloader 
     <div id="preloader">
         <div id="ctn-preloader" class="ctn-preloader">
             <div class="animation-preloader">
@@ -39,7 +39,7 @@
             <div class="loader-section section-left"></div>
             <div class="loader-section section-right"></div>
         </div>
-    </div>
+    </div>-->
     <!-- End preloader -->
 
     <!-- Start header area -->
@@ -89,6 +89,7 @@
                                             <span class="checkout__checkbox--checkmark"></span>
                                             <label class="checkout__checkbox--label login__remember--label" for="check2">
                                                 He leido los terminos y condiciones de uso</label>
+                                                <input type="hidden" name="user_public" value="1">
                                         </div>
                                     </div>
                                 </div>

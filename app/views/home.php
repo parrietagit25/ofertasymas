@@ -63,7 +63,7 @@
                                                     Collection 2022</h2>
                                                 <p class="slider__content--desc desc2 d-sm-2-none mb-40">Up To 40% Off Final Sale Items. <br>
                                                     Caught in the Moment!</p>    
-                                                <a class="slider__btn primary__btn" href="#">Show Collection
+                                                <a class="slider__btn primary__btn" href="#">Ver detalles
                                                     <svg class="primary__btn--arrow__icon" xmlns="http://www.w3.org/2000/svg" width="20.2" height="12.2" viewBox="0 0 6.2 6.2">
                                                     <path d="M7.1,4l-.546.546L8.716,6.713H4v.775H8.716L6.554,9.654,7.1,10.2,9.233,8.067,10.2,7.1Z" transform="translate(-4 -4)" fill="currentColor"></path>
                                                     </svg>
@@ -4354,7 +4354,7 @@
     </div>
     <!-- Quickview Wrapper End -->
 
-     <!-- Start News letter popup -->
+     <!-- Start News letter popup 
      <div class="newsletter__popup" data-animation="slideInUp">
         <div id="boxes" class="newsletter__popup--inner">
             <button class="newsletter__popup--close__btn" aria-label="search close button">
@@ -4382,7 +4382,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div>-->
     <!-- End News letter popup -->
 
     <!-- Scroll top bar -->
