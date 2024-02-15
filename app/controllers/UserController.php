@@ -20,6 +20,8 @@ class UserController extends Controller {
                 
                 $password = password_hash($_POST['pass'], PASSWORD_DEFAULT);
                 $_POST['pass'] = $password;
+
+                unset($_POST['registrar']);
     
                 $userModel = $this->model('GlobalModel');
                 $result = $userModel->insert('users', $_POST);
@@ -91,7 +93,7 @@ class UserController extends Controller {
             }
             
         }else{
-            $link_login = 'http://localhost/ofertasymas/public/login';
+            $link_login = '/login';
             header('Location: '.$link_login);
             exit;
         }

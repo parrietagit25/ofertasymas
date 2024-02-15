@@ -51,7 +51,7 @@ class OfertasController extends Controller {
             }
            
         }else{
-            $link_login = 'http://localhost/ofertasymas/public/login';
+            $link_login = '/login';
             header('Location: '.$link_login);
             exit;
         }

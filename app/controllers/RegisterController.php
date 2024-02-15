@@ -14,6 +14,8 @@ class RegisterController extends Controller {
             $password = password_hash($_POST['pass'], PASSWORD_DEFAULT);
             $_POST['pass'] = $password;
 
+            unset($_POST['registrar']);
+
             $userModel = $this->model('GlobalModel');
             $result = $userModel->insert('users', $_POST);
 
@@ -23,7 +25,7 @@ class RegisterController extends Controller {
 
                 $message .= 'Usuario registrado con éxito.';
 
-                header('Location: main');
+                //header('Location: main');
 
             } else {
                 $message .= 'No se pudo registrar el usuario.';
