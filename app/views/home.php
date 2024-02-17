@@ -51,9 +51,14 @@
         <section class="hero__slider--section">
             <div class="hero__slider--inner hero__slider--activation swiper">
                 <div class="hero__slider--wrapper swiper-wrapper">
+
+                    <?php if (!empty($data['slider'])): ?>
+                    <?php foreach ($data['slider'] as $user): ?>
+
                     <div class="swiper-slide ">
                         <div class="hero__slider--items home1__slider--bg">
-                            <div class="container-fluid">
+                            <img src="<?php echo htmlspecialchars($user->image_rute); ?>" alt="" width="1920" height="370" style="width:1920px; height: 370px;">
+                            <!--<div class="container-fluid">
                                 <div class="hero__slider--items__inner">
                                     <div class="row row-cols-1">
                                         <div class="col">
@@ -72,9 +77,16 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
+
+                    <?php endforeach; ?>
+                    <?php else: ?>
+                        <p>No se encontraron slider.</p>
+                    <?php endif; ?>
+
+                    <?php /* 
                     <div class="swiper-slide ">
                         <div class="hero__slider--items home1__slider--bg two">
                             <div class="container-fluid">
@@ -124,6 +136,7 @@
                             </div>
                         </div>
                     </div>
+                    <?php */ ?>
                 </div>
                 <div class="swiper__nav--btn swiper-button-next"></div>
                 <div class="swiper__nav--btn swiper-button-prev"></div>

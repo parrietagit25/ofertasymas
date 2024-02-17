@@ -7,7 +7,6 @@ session_start();
 
 class UserController extends Controller {
 
-
     public function index() {
 
         if (isset($_SESSION['id_user_oym'])) {
@@ -94,7 +93,7 @@ class UserController extends Controller {
             
         }else{
             $link_login = '/login';
-            header('Location: '.$link_login);
+            header('Location: '.__DIR__.$link_login);
             exit;
         }
 

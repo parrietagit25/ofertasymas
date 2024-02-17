@@ -51,7 +51,7 @@
         <!-- Start login section  -->
         <div class="login__section section--padding">
             <div class="container">
-                <form action="" method="POST">
+                <form action="" method="POST" enctype="multipart/form-data">
                     <div class="login__section--inner">
                         <div class="row row-cols-md-1 row-cols-1">
                             <div class="col">

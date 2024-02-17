@@ -37,7 +37,7 @@ class OfertasController extends Controller {
     
                 if ($result) {
     
-                    $message .= 'Usuario actualizado con éxito.';
+                    $message .= 'Slider actualizado con éxito.';
     
                     
                         
